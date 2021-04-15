@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+
+{% block title %}Topper{% endblock %}
+
+{% block content %}
+
+	{% if message %}
+
+		<script>
+			alert('{{message}}');
+		</script>
+
+	{% endif %}
+
+	<div class="row">
+
+		<form>
+			
+			<label id="topper-foam-type-label">Foam Type</label>
+			<div id="floor-foam-type-div" class="input-group mb-3">
+				Topper
+			</div>
+
+			<label id="topper-foam-size-label">Foam Size</label>
+			<div id="topper-foam-size" class="col-md">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Length (inch)</span>
+					</div>
+					<input id="topper-foam-length" name="length" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Width (inch)</span>
+					</div>
+					<input id="topper-foam-width" name="width" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Height (inch)</span>
+					</div>
+					<input id="topper-foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+			</div>
+
+			<label id="topper-foam-material-label">Foam Material</label>
+			<div id="topper-foam-material" class="input-group mb-3">
+				<select id="topper-foam-material-input" class="custom-select" name="topper-foam-material">
+					<option selected>Choose...</option>
+					<option value="medium">Medium</option>
+					<option value="firm">Firm</option>
+					<option value="memory">Memory Foam</option>
+				</select>
+			</div>
+
+			<label id="topper-foam-colour-label">Foam Colour</label>
+			<div id="topper-foam-colour" class="input-group mb-3">
+				<select id="topper-foam-colour-input" class="custom-select" name="topper-foam-colour">
+					<option selected>Choose...</option>
+					<option value="white">White</option>
+					<option value="blue">Blue</option>
+				</select>
+			</div>
+
+			<label id="topper-foam-quantity-label">Quantity</label>
+			<div id="topper-foam-quantity-div" class="input-group mb-3">
+				<input id="topper-foam-quantity-input" name="quantity" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div id="get-price" class="input-group">
+				<button type="button" class="btn btn-primary" onclick="getPriceClicked()">
+					Get Price
+				</button>
+			</div>
+
+		</form>
+
+	</div>
+
+	<div class="modal fade" id="get-price-modal" tabindex="-1" role="dialog" aria-labelledby="getPriceModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<form method="POST">
+					<div class="modal-body">
+					
+						<div class="row">
+							<div class="col-md-4">
+								<label>Foam Type: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-type" value="topper" type="text" name="type" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Length (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-length" type="text" name="length" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Width (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-width" type="text" name="width" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Height (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-height" type="text" name="height" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Material: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-material" type="text" name="material" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Colour: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-colour" type="text" name="colour" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Quantity: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-quantity" type="text" name="quantity" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row" style="font-size: 20px; font-weight: bold">
+							<div class="col-md-4">
+								<label>Price: </label>
+							</div>
+							<div class="col-md-8">
+								<label id="final-price">$0</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Add to Cart">
+					</div>
+
+					{% csrf_token %}
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function getPriceClicked() {
+			var length = document.getElementById("topper-foam-length").value
+			var width = document.getElementById("topper-foam-width").value
+			var height = document.getElementById("topper-foam-height").value
+
+			var material = document.getElementById("topper-foam-material-input").value
+			var colour = document.getElementById("topper-foam-colour-input").value
+
+			var quantity = parseInt(document.getElementById("topper-foam-quantity-input").value)
+			
+			var includesColour = ['blue', 'white', 'blue/recon', 'white/blue'].includes(colour)
+			var includesMaterial = ['soft', 'medium', 'firm', 'hard', 'memory'].includes(material)
+
+			if (includesColour == true && includesMaterial == true) {
+				var volume = length * width * height
+				var price = finalPrice(volume, material) * quantity
+			} else {
+				var price = 0
+			}
+
+
+			if (price > 0) {
+				document.getElementById("input-length").value = length
+				document.getElementById("input-width").value = width
+				document.getElementById("input-height").value = height
+				document.getElementById("input-material").value = material
+				document.getElementById("input-colour").value = colour
+				document.getElementById("input-quantity").value = quantity
+				document.getElementById('final-price').innerHTML = '£ ' + price.toFixed(2)
+				$("#get-price-modal").modal()
+			} else {
+				window.alert('parameters incorrect')
+			}
+				
+		}
+
+		function finalPrice(volume, material) {
+
+			var price = 0
+
+			if (material == 'memory') {
+
+				price = volume * 30 / 1728
+
+			} else if (material == 'medium') {
+
+				price = volume * 18 / 1728
+
+			} else if (material == 'firm') {
+
+				price = volume * 22 / 1728
+
+			}
+
+			return price
+
+		}
+	</script>
+
+{% endblock %}

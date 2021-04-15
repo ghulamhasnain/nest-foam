@@ -1,0 +1,100 @@
+.link-font {
+	font-family: 'Oswald', sans-serif;
+}
+
+.cursive-font {
+	font-family: 'Cookie', cursive;
+}
+
+/*.offer-heading-font {
+	font-size: 65px;
+	padding-top: 40px;
+}*/
+
+/*.offer-font {
+	font-size: 40px;
+}*/
+
+.redb {
+	border: 1px solid red;
+}
+
+.card {
+	margin: 10px;
+}
+
+.card-title {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.card-image-top {
+	width: 40%;
+	margin-top: 15%;
+}
+
+.heading1 {
+	text-align: center;
+	padding-top: 80px;
+	font-family: 'Oswald', sans-serif;
+}
+
+a.nav-link {
+	color: white !important;
+	font-weight: bold !important;
+}
+
+a.nav-link-footer {
+	color: Grey !important;
+	margin-right: 15px !important;
+}
+
+.adbanner {
+	margin-top: 80px;
+	opacity: 50%;
+}
+
+.dropdown-menu {
+	width: 100% !important;
+}
+
+.carousel-item-row {
+	position: absolute;
+	top: 0px;
+}
+
+.carousel-item-caption {
+	text-align: center;
+}
+
+@media (max-width: 2000px) {
+	.offer-heading-font, .offer-font {
+		font-size: 100px;
+	}
+
+	.carousel-item-pic {
+		height: 80%;
+		padding: 10%;
+	}
+}
+
+@media (max-width: 768px) {
+	.offer-heading-font, .offer-font {
+		font-size: 50px;
+	}
+
+	.carousel-item-pic {
+		width: 160%
+	}
+}
+
+@media (max-width: 544px) {
+	.offer-heading-font, .offer-font {
+		font-size: 30px;
+	}
+
+	.carousel-item-pic {
+		margin-top: 40%;
+		width: 160%;
+	}
+}

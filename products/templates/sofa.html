@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+
+{% block title %}Sofa{% endblock %}
+
+{% block content %}
+
+	{% if message %}
+
+		<script>
+			alert('{{message}}');
+		</script>
+
+	{% endif %}
+
+	<div class="row">
+
+		<form>
+			
+			<label id="foam-type-label">Sofa Foam Type</label>
+			<div id="foam-type-div" class="input-group mb-3">
+				<select id="foam-type" class="custom-select" name="foam-type" onchange="sofaFoamTypeSelected()">
+					<option selected>Choose...</option>
+					<option value="back">Back</option>
+					<option value="seat">Seat</option>
+				</select>
+			</div>
+
+			<label id="foam-size-label" style="display: none">Sofa Foam Size</label>
+			<div id="foam-size" class="col-md" style="display: none">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Length (inch)</span>
+					</div>
+					<input id="foam-length" name="length" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Width (inch)</span>
+					</div>
+					<input id="foam-width" name="width" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Height (inch)</span>
+					</div>
+					<input id="foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+			</div>
+
+			<label id="foam-back-material-label" style="display: none">Sofa Foam Material</label>
+			<div id="foam-back-material" class="input-group mb-3" style="display: none">
+				<select id="foam-back-material-input" class="custom-select" name="foam-back-material">
+					<option selected>Choose...</option>
+					<option value="soft">Soft</option>
+					<option value="medium">Medium</option>
+					<option value="firm">Firm</option>
+				</select>
+			</div>
+
+			<label id="foam-seat-material-label" style="display: none">Sofa Foam Material</label>
+			<div id="foam-seat-material" class="input-group mb-3" style="display: none">
+				<select id="foam-seat-material-input" class="custom-select" name="foam-seat-material">
+					<option selected>Choose...</option>
+					<option value="medium">Medium</option>
+					<option value="firm">Firm</option>
+					<option value="hard">Hard</option>
+				</select>
+			</div>
+
+			<label id="foam-seat-colour-label" style="display: none">Sofa Foam Colour</label>
+			<div id="foam-seat-colour" class="input-group mb-3" style="display: none">
+				<select id="foam-seat-colour-input" class="custom-select" name="foam-seat-colour">
+					<option selected>Choose...</option>
+					<option value="white/blue">White/Blue</option>
+					<option value="blue">Blue</option>
+					<option value="blue/recon">Blue/Recon</option>
+				</select>
+			</div>
+
+			<label id="foam-back-colour-label" style="display: none">Sofa Foam Colour</label>
+			<div id="foam-back-colour" class="input-group mb-3" style="display: none">
+				<select id="foam-back-colour-input" class="custom-select" name="foam-back-colour">
+					<option selected>Choose...</option>
+					<option value="white">White</option>
+					<option value="blue">Blue</option>
+					<option value="blue/recon">Blue/Recon</option>
+				</select>
+			</div>
+
+			<label id="foam-quantity-label" style="display: none">Quantity</label>
+			<div id="foam-quantity-div" class="input-group mb-3" style="display: none">
+				<input id="foam-quantity-input" name="quantity" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div id="get-price" class="input-group" style="display: none;">
+				<button type="button" class="btn btn-primary" onclick="getPriceClicked()">
+					Get Price
+				</button>
+			</div>
+
+		</form>
+
+	</div>
+
+	<div class="modal fade" id="get-price-modal" tabindex="-1" role="dialog" aria-labelledby="getPriceModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<form method="POST">
+					<div class="modal-body">
+					
+						<div class="row">
+							<div class="col-md-4">
+								<label>Sofa Foam Type: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-type" type="text" name="type" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Length (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-length" type="text" name="length" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Width (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-width" type="text" name="width" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Height (inch): </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-height" type="text" name="height" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Material: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-material" type="text" name="material" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Colour: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-colour" type="text" name="colour" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Quantity: </label>
+							</div>
+							<div class="col-md-8">
+								<input id="input-quantity" type="text" name="quantity" style="border: 0px" readonly>
+							</div>
+						</div>
+						<div class="row" style="font-size: 20px; font-weight: bold">
+							<div class="col-md-4">
+								<label>Price: </label>
+							</div>
+							<div class="col-md-8">
+								<label id="final-price">$50</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Add to Cart">
+					</div>
+
+					{% csrf_token %}
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function sofaFoamTypeSelected() {
+			
+			var sofaFoamType = document.getElementById("foam-type").value
+
+			if (sofaFoamType == 'seat') {
+
+				document.getElementById("foam-size").style.display = ""
+				document.getElementById("foam-seat-material").style.display = ""
+				document.getElementById("foam-back-material").style.display = "none"
+				document.getElementById("foam-seat-colour").style.display = ""
+				document.getElementById("foam-back-colour").style.display = "none"
+
+				document.getElementById("foam-size-label").style.display = ""
+				document.getElementById("foam-seat-material-label").style.display = ""
+				document.getElementById("foam-back-material-label").style.display = "none"
+				document.getElementById("foam-seat-colour-label").style.display = ""
+				document.getElementById("foam-back-colour-label").style.display = "none"
+
+				document.getElementById("get-price").style.display = ""
+
+				document.getElementById("foam-quantity-label").style.display = ""
+				document.getElementById("foam-quantity-div").style.display = ""
+
+			} else if (sofaFoamType == 'back') {
+
+				document.getElementById("foam-size").style.display = ""
+				document.getElementById("foam-seat-material").style.display = "none"
+				document.getElementById("foam-back-material").style.display = ""
+				document.getElementById("foam-seat-colour").style.display = "none"
+				document.getElementById("foam-back-colour").style.display = ""
+
+				document.getElementById("foam-size-label").style.display = ""
+				document.getElementById("foam-seat-material-label").style.display = "none"
+				document.getElementById("foam-back-material-label").style.display = ""
+				document.getElementById("foam-seat-colour-label").style.display = "none"
+				document.getElementById("foam-back-colour-label").style.display = ""
+
+				document.getElementById("get-price").style.display = ""
+
+				document.getElementById("foam-quantity-label").style.display = ""
+				document.getElementById("foam-quantity-div").style.display = ""
+
+			} else {
+
+				document.getElementById("foam-size").style.display = "none"
+				document.getElementById("foam-seat-material").style.display = "none"
+				document.getElementById("foam-back-material").style.display = "none"
+				document.getElementById("foam-seat-colour").style.display = "none"
+				document.getElementById("foam-back-colour").style.display = "none"
+
+				document.getElementById("foam-size-label").style.display = "none"
+				document.getElementById("foam-seat-material-label").style.display = "none"
+				document.getElementById("foam-back-material-label").style.display = "none"
+				document.getElementById("foam-seat-colour-label").style.display = "none"
+				document.getElementById("foam-back-colour-label").style.display = "none"
+
+				document.getElementById("get-price").style.display = "none"
+
+				document.getElementById("foam-quantity-label").style.display = "none"
+				document.getElementById("foam-quantity-div").style.display = "none"
+
+			}
+	
+		}
+
+		function getPriceClicked() {
+			var type = document.getElementById("foam-type").value
+			var length = document.getElementById("foam-length").value
+			var width = document.getElementById("foam-width").value
+			var height = document.getElementById("foam-height").value
+
+			if (type == "seat") {
+				var material = document.getElementById("foam-seat-material-input").value
+				var colour = document.getElementById("foam-seat-colour-input").value
+			} else if (type == "back") {
+				var material = document.getElementById("foam-back-material-input").value
+				var colour = document.getElementById("foam-back-colour-input").value
+			}
+
+			var quantity = parseInt(document.getElementById("foam-quantity-input").value)
+			
+			var includesColour = ['blue', 'white', 'blue/recon', 'white/blue', 'memory'].includes(colour)
+			var includesMaterial = ['soft', 'medium', 'firm', 'hard'].includes(material)
+
+			if (includesColour == true && includesMaterial == true) {
+				var volume = length * width * height
+				var price = calculatePrice(type, material, volume) * quantity
+			} else {
+				var price = 0
+			}
+
+
+			if (price > 0) {
+				document.getElementById("input-type").value = type
+				document.getElementById("input-length").value = length
+				document.getElementById("input-width").value = width
+				document.getElementById("input-height").value = height
+				document.getElementById("input-material").value = material
+				document.getElementById("input-colour").value = colour
+				document.getElementById("input-quantity").value = quantity
+				document.getElementById('final-price').innerHTML = '£ ' + price.toFixed(2)
+				$("#get-price-modal").modal()
+			} else {
+				window.alert('parameters incorrect')
+			}
+				
+		}
+
+		function calculatePrice(type, material, volume) {
+
+			if (type == 'back') {
+
+				if (material == 'soft') {
+
+					price = volume * 18 / 1728
+
+				} else if (material == 'medium') {
+
+					price = volume * 20 / 1728
+
+				} else if (material == 'firm') {
+
+					price = volume * 22 / 1728
+
+				}
+
+			} else if (type == 'seat') {
+
+				if (material == 'medium') {
+
+					price = volume * 18 / 1728
+
+				} else if (material == 'firm') {
+
+					price = volume * 22 / 1728
+
+				} else if (material == 'hard') {
+
+					price = volume * 25 / 1728
+
+				}
+
+			}
+
+			return price
+
+		}
+	</script>
+
+{% endblock %}

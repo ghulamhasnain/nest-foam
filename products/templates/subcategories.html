@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Subcategories{% endblock %}
+
+{% block content %}
+
+	{% if message %}
+
+		<script>
+			alert('{{message}}');
+		</script>
+
+	{% endif %}
+
+	<div id="number-of-subcategories" style="display: none">{{ subcategories|length }}</div>
+	<div id="subcategory-name" style="display: none">{{ subcategories.0.name }}</div>
+
+	<div class="row">
+
+		{% for subcat in subcategories %}
+
+			<div class="col-sm">
+				<a href="/{{ category|slugify }}/{{ subcat.name|slugify }}">
+					<img src="https://via.placeholder.com/550/?text={{ subcat.name }}" style="width: 100%">
+				</a>
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+	<script type="text/javascript">
+		var numberOfSubcategories = parseInt(document.getElementById("number-of-subcategories").innerHTML)
+		var subcategoryName = (document.getElementById("subcategory-name").innerHTML).toLowerCase().replace(' ', '-')
+		window.onload = function() {
+			if (numberOfSubcategories == 1) {
+				var url = subcategoryName
+				window.location.href = url
+			}
+		}
+	</script>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+
+	{% if message %}
+
+		<script>
+			alert('{{message}}');
+		</script>
+
+	{% endif %}
+
+	<div class="row">
+
+		<div class="col-8 offset-2">
+
+			<table class='table'>
+				<thead class='thread-dark'>
+					<tr>
+						<th scope="col">Subcategory</th>
+						<th scope="col">Size</th>
+						<th scope="col">Material</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Price</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+
+				<tbody class='thread'>
+
+					{% for c in cart %}
+
+						<tr>
+							<th scope="col">
+								{% if c.1 == c.2 %}
+									{{c.1}}
+								{% else %}
+									{{c.1}} ( {{c.2}} )
+								{% endif %}
+							</th>
+							<th scope="col">{{c.3}} x {{c.4}} x {{c.5}}</th>
+							<th scope="col">
+								{% if c.1 == "dining-chair" or c.1 == "floor" %}
+									{{c.6}}
+								{% else %}
+									{{c.6}} ( {{c.7}} )
+								{% endif %}
+							</th>
+							<th scope="col">{{c.8}}</th>
+							<th scope="col">£{{c.9}}</th>
+							<th scope="col">
+								<a href="/cart/delete/{{ forloop.counter }}">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill btn-outline-danger" viewBox="0 0 16 16">
+										<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+									</svg>
+								</a>
+							</th>
+						</tr>
+					
+					{% endfor %}
+
+				</tbody>
+
+				<thead class='thread-dark'>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col">Total</th>
+						<th scope="col">£{{cart_total}}</th>
+					</tr>
+				</thead>
+
+				<thead class='thread-dark'>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col">
+							<a href="/cart/empty" class="btn btn-danger btn-sm" style="width: 100%">
+								Clear Cart
+							</a>
+						</th>
+						<th scope="col"><button class="btn btn-primary btn-sm" style="width: 100%">Checkout</button></th>
+					</tr>
+				</thead>
+			</table>
+
+		</div>
+
+	</div>
+
+{% endblock %}
