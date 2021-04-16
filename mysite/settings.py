@@ -94,7 +94,7 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ghulamhasnain$nest-foam',
+        'NAME': 'ghulamhasnain$default',
         'USER': 'ghulamhasnain',
         'PASSWORD': 'bluing-abduct-WAKE',
         'HOST': 'ghulamhasnain.mysql.pythonanywhere-services.com',
