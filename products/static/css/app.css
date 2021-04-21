@@ -98,3 +98,14 @@ a.nav-link-footer {
 		width: 160%;
 	}
 }
+
+.foam-req {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.item-specifics-row {
+	margin-top: 15px;
+}

@@ -148,11 +148,18 @@ class Cart(View):
 	def get(self, request):
 
 		cart_len = cart_count(request)
-		cart = request.session['cart']
+
+		try:
+			cart = request.session['cart']
+
+		except:
+			cart = []
+
 		cart_total = 0
 
-		for c in cart:
-			cart_total = cart_total + c[-1]
+		if cart_len > 0:
+			for c in cart:
+				cart_total = cart_total + c[-1]
 
 		return render(request, 'cart.html', {'cart_len': cart_len, 'cart': cart, 'cart_total': roundToTwoDecimalPlaces(cart_total)})
 
