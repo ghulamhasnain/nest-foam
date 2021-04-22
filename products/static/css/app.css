@@ -3,7 +3,8 @@
 }
 
 .cursive-font {
-	font-family: 'Cookie', cursive;
+	/*font-family: 'Cookie', cursive;*/
+    font-family: 'Montserrat', sans-serif;
 }
 
 /*.offer-heading-font {
@@ -69,7 +70,7 @@ a.nav-link-footer {
 
 @media (max-width: 2000px) {
 	.offer-heading-font, .offer-font {
-		font-size: 100px;
+		font-size: 70px;
 	}
 
 	.carousel-item-pic {
@@ -106,6 +107,6 @@ a.nav-link-footer {
 	padding-bottom: 10px;
 }
 
-.item-specifics-row {
+/*.item-specifics-row {
 	margin-top: 15px;
-}
+}*/
