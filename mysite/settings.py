@@ -84,21 +84,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # for more information
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'NAME': 'db.sqlite3',
-        # 'USER': '[YOUR-USERNAME]',
-        # 'PASSWORD': '[YOUR-PASSWORD]',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'ghulamhasnain$default',
-    #     'USER': 'ghulamhasnain',
-    #     'PASSWORD': 'bluing-abduct-WAKE',
-    #     'HOST': 'ghulamhasnain.mysql.pythonanywhere-services.com',
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    #     'NAME': 'db.sqlite3',
+    #     # 'USER': '[YOUR-USERNAME]',
+    #     # 'PASSWORD': '[YOUR-PASSWORD]',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ghulamhasnain$default',
+        'USER': 'ghulamhasnain',
+        'PASSWORD': 'bluing-abduct-WAKE',
+        'HOST': 'ghulamhasnain.mysql.pythonanywhere-services.com',
+    }
 }
 # [END db_setup]
 
