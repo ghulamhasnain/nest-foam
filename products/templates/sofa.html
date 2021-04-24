@@ -11,14 +11,30 @@
 		</script>
 
 	{% endif %}
+	<style type="text/css">
 
+		.zoom {
+			padding: 50px;
+			background-color: green;
+			transition: transform .2s;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+		}
 
+		.zoom:hover {
+			transform: scale(2.5);
+		}
+		
+	</style>
 
 	<div class="row" style="padding-top: 0px">
-		<div class="col-md-6" style="padding: 70px">
+		<div class="col-md-6 p-md-5">
 			<div class="bg-light" style="padding: 50px">
 
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				<div class="zoom"></div>
+
+				<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img src="/static/img/sofa1.png" class="w-100" alt="...">
@@ -38,18 +54,18 @@
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>
 					</a>
-				</div>
+				</div> -->
 
 			</div>
 		</div>
-		<div class="col-md-6" style="padding: 70px">
-			<div class="" style="padding-top: 0px">
+		<div class="col-md-6 p-md-5">
+			<div class="">
 				<h2>Sofa Foam</h2>
 				<hr>
 			</div>
 			<div class="row item-specifics-row" style="margin-top: 15px">
-				<div class="col-2" style="font-weight: bold; padding-right: 15px;">TYPE</div>
-				<div class="col-10">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">TYPE</div>
+				<div class="col-md-10">
 					<div class="btn-group-toggle" data-toggle="buttons">
 						<label class="btn btn-light active btn-sm">
 							<input class="foam_types" type="radio" name="type_options" id="type_back" onclick="typeBackClicked()" checked> Back
@@ -61,20 +77,20 @@
 				</div>
 			</div>
 			<div class="row item-specifics-row" style="margin-top: 15px">
-				<div class="col-2" style="font-weight: bold; padding-right: 15px;">SIZE</div>
-				<div class="input-group input-group-sm mb-3 col-6">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">SIZE</div>
+				<div class="input-group input-group-sm mb-3 col-md-6">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">Length (inch)</span>
 					</div>
 					<input id="foam-length" name="length" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
 				</div>
-				<div class="input-group input-group-sm mb-3 col-6 offset-2">
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-2">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">Width (inch)</span>
 					</div>
 					<input id="foam-width" name="width" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
 				</div>
-				<div class="input-group input-group-sm mb-3 col-6 offset-2">
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-2">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-default">Height (inch)</span>
 					</div>
@@ -82,8 +98,8 @@
 				</div>
 			</div>
 			<div class="row item-specifics-row" style="margin-top: 15px">
-				<div class="col-2" style="font-weight: bold; padding-right: 15px;">MATERIAL</div>
-				<div class="col-10">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">MATERIAL</div>
+				<div class="col-md-10">
 					<div class="btn-group-toggle" data-toggle="buttons">
 						<label id="material_soft_label" class="btn btn-light active btn-sm">
 							<input type="radio" name="material_options" id="material_soft"> Soft
@@ -101,8 +117,8 @@
 				</div>
 			</div>
 			<div class="row item-specifics-row" style="margin-top: 15px">
-				<div class="col-2" style="font-weight: bold; padding-right: 15px;">COLOUR</div>
-				<div class="col-10">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">COLOUR</div>
+				<div class="col-md-10">
 					<div class="btn-group-toggle" data-toggle="buttons">
 						<label id="colour_white_label" class="btn btn-light active btn-sm">
 							<input type="radio" name="colour_options" id="colour_white"> White
@@ -120,8 +136,8 @@
 				</div>
 			</div>
 			<div class="row item-specifics-row" style="margin-top: 15px">
-				<div class="col-2" style="font-weight: bold; padding-right: 15px;">QUANTITY</div>
-				<div class="col-4">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">QUANTITY</div>
+				<div class="col-md-4">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<button id="quantity_minus" onclick="quantityMinusClicked()" type="button" class="btn input-group-text">
@@ -142,7 +158,7 @@
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px">
-				<div id="get-price" class="col-4 offset-2 input-group">
+				<div id="get-price" class="col-md-4 offset-md-2 input-group">
 					<button type="button" class="btn btn-primary btn-block" onclick="getPriceClicked()">
 						Get Price
 					</button>
@@ -169,7 +185,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-5 offset-md-1" style="padding-right: 25px">
+		<div class="col-md-5 offset-md-1 mt-2">
 			<div class="bg-light" style="padding: 50px">
 
 				<img src="/static/img/sofa1.png" class="w-100" alt="...">
@@ -177,7 +193,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-5" style="padding-left: 25px">
+		<div class="col-md-5 mt-2">
 			<div class="bg-light" style="padding: 50px">
 
 				<img src="/static/img/sofa1.png" class="w-100" alt="...">
@@ -476,6 +492,7 @@
 			return price
 
 		}
+
 	</script>
 
 {% endblock %}
