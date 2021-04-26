@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block title %}Floor{% endblock %}
 
@@ -12,16 +12,41 @@
 
 	{% endif %}
 
-	<div class="row">
+	<style type="text/css">
 
-		<form>
+		.zoom {
+			transition: transform .2s;
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+		}
+
+		.zoom:hover {
+			transform: scale(1.5);
+		}
+		
+	</style>
+
+	<div class="row" style="padding-top: 0px">
+
+		<div class="col-md-6 p-md-5">
+			<div class="bg-light" style="padding: 80px">
+
+				<div class="zoom">
+					<img src="/static/img/sofa1.png" class="w-100" alt="...">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-6 p-md-5">
 			
-			<label id="foam-type-label">Foam Type</label>
-			<div id="foam-type-div" class="input-group mb-3">
-				Floor
+			<div class="mt-4 mt-sm-0">
+				<h2>Floor</h2>
+				<hr>
 			</div>
 
-			<label id="foam-size-label">Foam Size</label>
+			<!-- <label id="foam-size-label">Foam Size</label>
 			<div id="foam-size" class="col-md">
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
@@ -43,9 +68,31 @@
 					</div>
 					<input id="foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
 				</div>
+			</div> -->
+
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">SIZE</div>
+				<div class="input-group input-group-sm mb-3 col-md-6">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Length (inch)</span>
+					</div>
+					<input id="foam-length" name="length" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-2">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Width (inch)</span>
+					</div>
+					<input id="foam-width" name="width" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-2">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Height (inch)</span>
+					</div>
+					<input id="foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
 			</div>
 
-			<label id="foam-material-label">Foam Material</label>
+			<!-- <label id="foam-material-label">Foam Material</label>
 			<div id="foam-material" class="input-group mb-3">
 				<select id="foam-material-input" class="custom-select" name="foam-material">
 					<option selected>Choose...</option>
@@ -53,21 +100,103 @@
 					<option value="firm">Firm</option>
 					<option value="hard">Hard</option>
 				</select>
+			</div> -->
+
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">MATERIAL</div>
+				<div class="col-md-10">
+					<div class="btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-light btn-sm">
+							<input type="radio" name="material_options" id="material_medium" checked> Medium
+						</label>
+						<label class="btn btn-light btn-sm">
+							<input type="radio" name="material_options" id="material_firm"> Firm
+						</label>
+						<label id="material_hard_label" class="btn btn-light btn-sm">
+							<input type="radio" name="material_options" id="material_hard"> Hard
+						</label>
+					</div>
+				</div>
 			</div>
 
-			<label id="foam-quantity-label">Quantity</label>
-			<div id="foam-quantity-div" class="input-group mb-3">
-				<input id="foam-quantity-input" name="quantity" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-2" style="font-weight: bold; padding-right: 15px;">QUANTITY</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="quantity_minus" onclick="quantityMinusClicked()" type="button" class="btn input-group-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+									<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+								</svg>
+							</button>
+						</div>
+						<input style="text-align: center;" id="foam-quantity-input" value="1" type="text" class="form-control form-control-sm"  aria-label="Quantity">
+						<div class="input-group-append">
+							<button id="quantity_plus" onclick="quantityPlusClicked()" type="button" class="btn input-group-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div id="get-price" class="input-group">
-				<button type="button" class="btn btn-primary" onclick="getPriceClicked()">
-					Get Price
-				</button>
+			<div class="row" style="margin-top: 15px">
+				<div id="get-price" class="col-md-4 offset-md-2 input-group">
+					<button type="button" class="btn btn-primary btn-block" onclick="getPriceClicked()">
+						Get Price
+					</button>
+				</div>
 			</div>
 
-		</form>
+		</div>
 
+	</div>
+
+	<div class="row" style="padding-top: 20px">
+		<div class="col-md-4 offset-md-4">
+			<h2 style="text-align: center;">Description</h2>
+			<hr>
+		</div>
+	</div>
+
+	<div class="row" style="padding-top: 20px">
+		<div class="col-md-10 offset-md-1">
+			<p>
+				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				<br><br>
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5 offset-md-1 mt-2">
+			<div class="bg-light" style="padding: 50px">
+
+				<img src="/static/img/sofa1.png" class="w-100" alt="...">
+				
+			</div>
+		</div>
+
+		<div class="col-md-5 mt-2">
+			<div class="bg-light" style="padding: 50px">
+
+				<img src="/static/img/sofa1.png" class="w-100" alt="...">
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="padding-top: 20px">
+		<div class="col-md-10 offset-md-1">
+			<p>
+				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				<br><br>
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
+			</p>
+		</div>
 	</div>
 
 	<div class="modal fade" id="get-price-modal" tabindex="-1" role="dialog" aria-labelledby="getPriceModalLabel" aria-hidden="true">
@@ -163,7 +292,66 @@
 
 	<script type="text/javascript">
 
+		function quantityPlusClicked() {
+			currentQuantity = document.getElementById("foam-quantity-input").value
+			newQuantity = parseInt(currentQuantity) + 1
+			console.log(newQuantity)
+			document.getElementById("foam-quantity-input").value = newQuantity
+		}
+
+		function quantityMinusClicked() {
+			currentQuantity = document.getElementById("foam-quantity-input").value
+			newQuantity = parseInt(currentQuantity) - 1
+
+			if (newQuantity >= 0 ) {
+				document.getElementById("foam-quantity-input").value = newQuantity
+			}
+		
+		}
+
 		function getPriceClicked() {
+			var length = document.getElementById("foam-length").value
+			var width = document.getElementById("foam-width").value
+			var height = document.getElementById("foam-height").value
+			var type = "floor"
+			var material = ""
+			var colour = "floor"
+			var quantity = parseInt(document.getElementById("foam-quantity-input").value)
+
+			if (document.getElementById("material_hard").checked) {
+				material = "hard"
+			} else if (document.getElementById("material_medium").checked) {
+				material = "medium"
+			} else if (document.getElementById("material_firm").checked) {
+				material = "firm"
+			}
+
+			var includesMaterial = ['medium', 'firm', 'hard'].includes(material)
+
+			if (includesMaterial == true) {
+				var volume = length * width * height
+				var price = calculatePrice(material, volume) * quantity
+			} else {
+				var price = 0
+			}
+
+
+			if (price > 0) {
+				// document.getElementById("input-type").value = type
+				document.getElementById("input-length").value = length
+				document.getElementById("input-width").value = width
+				document.getElementById("input-height").value = height
+				document.getElementById("input-material").value = material
+				// document.getElementById("input-colour").value = colour
+				document.getElementById("input-quantity").value = quantity
+				document.getElementById('final-price').innerHTML = '£ ' + price.toFixed(2)
+				$("#get-price-modal").modal()
+			} else {
+				window.alert('parameters incorrect')
+			}
+		}
+
+		function getPriceClickedOld() {
 			var length = document.getElementById("foam-length").value
 			var width = document.getElementById("foam-width").value
 			var height = document.getElementById("foam-height").value

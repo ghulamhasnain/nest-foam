@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block title %}Dining Chair{% endblock %}
 
@@ -12,25 +12,136 @@
 
 	{% endif %}
 
-	<div class="row">
+	<style type="text/css">
 
-		<form>
+		.zoom {
+			transition: transform .2s;
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+		}
+
+		.zoom:hover {
+			transform: scale(1.5);
+		}
+		
+	</style>
+
+	<div class="row" style="padding-top: 0px">
+
+		<div class="col-md-6 p-md-5">
+			<div class="bg-light" style="padding: 80px">
+
+				<div class="zoom">
+					<img src="/static/img/sofa1.png" class="w-100" alt="...">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-6 p-md-5">
 			
-			<label id="foam-type-label">Foam Type</label>
-			<div id="foam-type-div" class="input-group mb-3">
-				Dining Chair
+			<div class="mt-4 mt-sm-0">
+				<h2>Dining Chair</h2>
+				<hr>
 			</div>
 
-			<label id="foam-material-label">Foam Material</label>
+			<!-- <label id="foam-material-label">Foam Material</label>
 			<div id="foam-material" class="input-group mb-3">
 				<select id="foam-material-input" class="custom-select" name="foam-material" onchange="foamMaterialSelected()">
 					<option selected>Choose...</option>
 					<option value="firm">Firm</option>
 					<option value="hard">Hard</option>
 				</select>
+			</div> -->
+
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-3" style="font-weight: bold; padding-right: 15px;">MATERIAL</div>
+				<div class="col-md-9">
+					<div class="btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-light active btn-sm">
+							<input class="foam_types" type="radio" name="material_options" id="material-firm" onclick="materialFirmClicked()" checked> Firm
+						</label>
+						<label class="btn btn-light btn-sm">
+							<input class="foam_types" type="radio" name="material_options" id="material-hard" onclick="materialHardClicked()"> Hard
+						</label>
+					</div>
+				</div>
 			</div>
 
-			<label id="foam-firm-size-label" style="display: none">Foam Size</label>
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-3" style="font-weight: bold; padding-right: 15px;">SIZE TYPE</div>
+				<div class="col-md-9">
+					<div class="btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-light active btn-sm">
+							<input class="foam_types" type="radio" name="type_options" id="type-custom" onclick="sizeTypeCustomClicked()" checked> Custom
+						</label>
+						<label class="btn btn-light btn-sm">
+							<input class="foam_types" type="radio" name="type_options" id="type-predefined" onclick="sizeTypePredefinedClicked()"> Predefined
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div id="predefined-size-div" class="row item-specifics-row" style="margin-top: 15px; display: none">
+				<div class="col-md-3" style="font-weight: bold; padding-right: 15px;">SIZE <br>(L x W x H)</div>
+				<div class="col-md-6">
+					<select id="foam-firm-size-input" class="custom-select" name="foam-firm-size" onchange="foamSizeSelected(this)">
+						<option selected>Choose...</option>
+						
+						<option value="15x16x1">15 x 16 x 1 inch</option>
+						<option value="15x16x1.5">15 x 16 x 1.5 inch</option>
+						<option value="15x16x2">15 x 16 x 2 inch</option>
+						<option value="15x16x3">15 x 16 x 3 inch</option>
+						<option value="15x16x4">15 x 16 x 4 inch</option>
+
+						<option disabled>-------------</option>
+
+						<option value="18x18x1">18 x 18 x 1 inch</option>
+						<option value="18x18x1.5">18 x 18 x 1.5 inch</option>
+						<option value="18x18x2">18 x 18 x 2 inch</option>
+						<option value="18x18x3">18 x 18 x 3 inch</option>
+						<option value="18x18x4">18 x 18 x 4 inch</option>
+
+						<option disabled>-------------</option>
+
+						<option value="19x20x1">19 x 20 x 1 inch</option>
+						<option value="19x20x1.5">19 x 20 x 1.5 inch</option>
+						<option value="19x20x2">19 x 20 x 2 inch</option>
+						<option value="19x20x3">19 x 20 x 3 inch</option>
+						<option value="19x20x4">19 x 20 x 4 inch</option>
+
+						<option disabled>-------------</option>
+
+						<option value="custom">Custom size</option>
+					</select>
+					<select style="display: none" id="foam-hard-size-input" class="custom-select" name="foam-hard-size" onchange="foamSizeSelected(this)">
+						<option selected>Choose...</option>
+						
+						<option value="15x16x1">15 x 16 x 1 inch</option>
+						<option value="15x16x1.5">15 x 16 x 1.5 inch</option>
+						<option value="15x16x2">15 x 16 x 2 inch</option>
+						
+						<option disabled>-------------</option>
+
+						<option value="18x18x1">18 x 18 x 1 inch</option>
+						<option value="18x18x1.5">18 x 18 x 1.5 inch</option>
+						<option value="18x18x2">18 x 18 x 2 inch</option>
+						
+						<option disabled>-------------</option>
+
+						<option value="19x20x1">19 x 20 x 1 inch</option>
+						<option value="19x20x1.5">19 x 20 x 1.5 inch</option>
+						<option value="19x20x2">19 x 20 x 2 inch</option>
+						
+						<option disabled>-------------</option>
+
+						<option value="custom">Custom size</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- <label id="foam-firm-size-label" style="display: none">Foam Size</label>
 			<div id="foam-firm-size-div" class="input-group mb-3" style="display: none">
 				<select id="foam-firm-size-input" class="custom-select" name="foam-firm-size" onchange="foamSizeSelected(this)">
 					<option selected>Choose...</option>
@@ -61,9 +172,9 @@
 
 					<option value="custom">Custom size</option>
 				</select>
-			</div>
+			</div> -->
 
-			<label id="foam-hard-size-label" style="display: none">Foam Size</label>
+			<!-- <label id="foam-hard-size-label" style="display: none">Foam Size</label>
 			<div id="foam-hard-size-div" class="input-group mb-3" style="display: none">
 				<select id="foam-hard-size-input" class="custom-select" name="foam-hard-size" onchange="foamSizeSelected(this)">
 					<option selected>Choose...</option>
@@ -88,9 +199,9 @@
 
 					<option value="custom">Custom size</option>
 				</select>
-			</div>
+			</div> -->
 
-			<label id="foam-custom-size-label" style="display: none">Custom Foam Size</label>
+			<!-- <label id="foam-custom-size-label" style="display: none">Custom Foam Size</label>
 			<div id="foam-custom-size-div" class="col-md" style="display: none">
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
@@ -112,20 +223,73 @@
 					</div>
 					<input id="foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
 				</div>
+			</div> -->
+
+			<div id="custom-size-div" class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-3" style="font-weight: bold; padding-right: 15px;">SIZE</div>
+				<div class="input-group input-group-sm mb-3 col-md-6">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Length (inch)</span>
+					</div>
+					<input id="foam-length" name="length" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Width (inch)</span>
+					</div>
+					<input id="foam-width" name="width" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group input-group-sm mb-3 col-md-6 offset-md-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Height (inch)</span>
+					</div>
+					<input id="foam-height" name="height" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+				</div>
 			</div>
 
-			<label id="foam-quantity-label" style="display: none">Quantity</label>
+			<!-- <label id="foam-quantity-label" style="display: none">Quantity</label>
 			<div id="foam-quantity-div" class="input-group mb-3" style="display: none">
 				<input id="foam-quantity-input" name="quantity" type="number" class="form-control" aria-label="Default" value="1" aria-describedby="inputGroup-sizing-default">
+			</div> -->
+
+			<div class="row item-specifics-row" style="margin-top: 15px">
+				<div class="col-md-3" style="font-weight: bold; padding-right: 15px;">QUANTITY</div>
+				<div class="col-md-4">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button id="quantity_minus" onclick="quantityMinusClicked()" type="button" class="btn input-group-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+									<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+								</svg>
+							</button>
+						</div>
+						<input style="text-align: center;" id="foam-quantity-input" value="1" type="text" class="form-control form-control-sm"  aria-label="Quantity">
+						<div class="input-group-append">
+							<button id="quantity_plus" onclick="quantityPlusClicked()" type="button" class="btn input-group-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div id="get-price" class="input-group" style="display: none">
+			<!-- <div id="get-price" class="input-group" style="display: none">
 				<button type="button" class="btn btn-primary" onclick="getPriceClicked()">
 					Get Price
 				</button>
+			</div> -->
+
+			<div class="row" style="margin-top: 15px">
+				<div id="get-price" class="col-md-4 offset-md-3 input-group">
+					<button type="button" class="btn btn-primary btn-block" onclick="getPriceClicked()">
+						Get Price
+					</button>
+				</div>
 			</div>
 
-		</form>
+		</div>
 
 	</div>
 
@@ -222,6 +386,43 @@
 
 	<script type="text/javascript">
 
+		function quantityPlusClicked() {
+			currentQuantity = document.getElementById("foam-quantity-input").value
+			newQuantity = parseInt(currentQuantity) + 1
+			console.log(newQuantity)
+			document.getElementById("foam-quantity-input").value = newQuantity
+		}
+
+		function quantityMinusClicked() {
+			currentQuantity = document.getElementById("foam-quantity-input").value
+			newQuantity = parseInt(currentQuantity) - 1
+
+			if (newQuantity >= 0 ) {
+				document.getElementById("foam-quantity-input").value = newQuantity
+			}
+		
+		}
+
+		function materialFirmClicked() {
+			document.getElementById("foam-firm-size-input").style.display = ""
+			document.getElementById("foam-hard-size-input").style.display = "none"
+		}
+
+		function materialHardClicked() {
+			document.getElementById("foam-firm-size-input").style.display = "none"
+			document.getElementById("foam-hard-size-input").style.display = ""
+		}
+
+		function sizeTypeCustomClicked() {
+			document.getElementById("custom-size-div").style.display = ""
+			document.getElementById("predefined-size-div").style.display = "none"
+		}
+
+		function sizeTypePredefinedClicked() {
+			document.getElementById("custom-size-div").style.display = "none"
+			document.getElementById("predefined-size-div").style.display = ""
+		}
+
 		var firmPrices = {	'15x16x1': 3.5, '18x18x1': 4.2, '19x20x1': 5, '15x16x1.5': 5.25, '18x18x1.5': 6.75, '19x20x1.5': 7.5, '15x16x2': 7, '18x18x2': 8.4, '19x20x2': 10, '15x16x3': 10.5, '18x18x3': 13.5, '19x20x3': 15, '15x16x4': 14, '18x18x4': 16.8, '19x20x4': 20, 'custom': 0.012731481	}
 		var hardPrices = {	'15x16x1': 4.5, '18x18x1': 6, '19x20x1': 7, '15x16x1.5': 6.75, '18x18x1.5': 9, '19x20x1.5': 10, '15x16x2': 9, '18x18x2': 14, '19x20x2': 14, 'custom': 0.017361111	}
 
@@ -290,6 +491,80 @@
 		}
 
 		function getPriceClicked() {
+			var length = 0
+			var width = 0
+			var height = 0
+			var material = ""
+			var quantity = parseInt(document.getElementById("foam-quantity-input").value)
+
+			var firmSizeInput = document.getElementById("foam-firm-size-input").value
+			var hardSizeInput = document.getElementById("foam-hard-size-input").value
+
+			console.log(firmSizeInput)
+
+			var price = 0
+
+			if (document.getElementById("material-firm").checked) {
+				material = "firm"
+			} else if (document.getElementById("material-hard").checked) {
+				material = "hard"
+			}
+
+			if (document.getElementById("type-custom").checked) {
+
+				length = document.getElementById("foam-length").value
+				width = document.getElementById("foam-width").value
+				height = document.getElementById("foam-height").value
+
+				var volume = length * width * height
+				var price = calculateCustomPrice(material, volume) * quantity
+
+				document.getElementById("input-colour").value = "custom"
+
+			} else if (document.getElementById("type-predefined").checked) {
+				
+				if (material == "firm") {
+					
+					sizeList = firmSizeInput.split("x")
+					
+					length = sizeList[0]
+					width = sizeList[1]
+					height = sizeList[2]
+
+					price = firmPrices[firmSizeInput] * quantity
+
+					document.getElementById("input-colour").value = firmSizeInput
+
+				} else if (material == "hard") {
+
+					sizeList = hardSizeInput.split("x")
+					
+					length = sizeList[0]
+					width = sizeList[1]
+					height = sizeList[2]
+
+					price = hardPrices[hardSizeInput] * quantity
+					document.getElementById("input-colour").value = hardSizeInput
+
+				}
+
+			}
+
+			if (price > 0) {
+				document.getElementById("input-length").value = length
+				document.getElementById("input-width").value = width
+				document.getElementById("input-height").value = height
+				document.getElementById("input-material").value = material
+				// document.getElementById("input-colour").value = colour
+				document.getElementById("input-quantity").value = quantity
+				document.getElementById('final-price').innerHTML = '£ ' + price.toFixed(2)
+				$("#get-price-modal").modal()
+			} else {
+				window.alert('parameters incorrect')
+			}
+		}
+
+		function getPriceClickedOld() {
 			var material = document.getElementById("foam-material-input").value
 			var firmSizeInput = document.getElementById("foam-firm-size-input").value
 			var hardSizeInput = document.getElementById("foam-hard-size-input").value
