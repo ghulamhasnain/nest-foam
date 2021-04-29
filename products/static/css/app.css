@@ -31,7 +31,7 @@
 }
 
 .circle-outline {
-	animation: cssAnimation 2s 1s forwards;
+	animation: cssAnimation 2s 2s forwards;
 	opacity: 0;
 }
 
