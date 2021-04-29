@@ -13,167 +13,165 @@
 	{% endif %}
 
 	<div class="row">
-		<div id="slides" class="carousel slide" data-ride="carousel">
+		<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+			
+			<!-- Carousel indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-indicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-indicators" data-slide-to="1"></li>
+				<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselIndicators" data-slide-to="2"></li>
 			</ol>
 
-			<div class="carousel-inner d-sm-none">
-				<div class="carousel-item mobile-car-item active">
-					<img src="static/img/banner2.png" class="d-block w-100" alt="...">
-					<div class="carousel-item-row w-100 h-100">
-						<div class="row" style="display: flex; align-items: center;">
-							<div class="col-6">
-								<img src="static/img/sofa1.png" class="carousel-item-pic animate__animated animate__fadeInLeft" alt="...">
-							</div>
-							<div class="carousel-item-caption col-6 cursive-font" style="color: black;">
-								<p class="offer-heading-font animate__animated animate__fadeInDown" style="margin-top: 40%">Special Offer</p>
-								<p class="offer-font animate__animated animate__fadeInUp">$100</p>
+			<!-- Carousel images -->
+			<div class="carousel-inner pt-5 pb-5 redback">
+				
+				<div class="carousel-item active">
+					
+					<div class="row justify-content-center">
+						<img style="position: absolute;" src="static/img/banner-circle.png" class="w-100 animate__animated animate__fadeInRight" alt="...">
+						<img style="position: absolute;" src="static/img/banner-circle-outline.png" class="w-100 circle-outline" alt="...">
+						<div class="col-md-10">
+							<div class="testimony-wrap d-flex">
+								<div class="img col-md-6 animate__animated animate__fadeInRight animate__delay-2s">
+									<img src="static/img/sofa1.png" class="p-5 w-100 slide-image" alt="...">
+								</div>
+								<div class="text text-center d-flex align-items-center">
+									<div class="desc w-100">
+										<p class="mb-2 animate__animated animate__fadeInLeft animate__delay-2s carousel-primary-text">Occasional chair collection</p>
+										<div class="pt-4">
+											<p class="mb-1 animate__animated animate__fadeInLeft animate__delay-3s carousel-secondary-text">Your sofa is where you let your guard down, put your feet up and relax.</p>
+										</div>
+										<div class="pt-4">
+											<button type="button" class="btn btn-lg btn-dark animate__animated animate__fadeInLeft animate__delay-4s">Shop Now</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
-				<div class="carousel-item mobile-car-item">
-					<img src="static/img/banner2.png" class="d-block w-100" alt="...">
-					<div class="carousel-item-row w-100 h-100">
-						<div class="row" style="display: flex; align-items: center;">
-							<div class="col-6">
-								<img src="static/img/sofa1.png" class="carousel-item-pic animate__animated animate__fadeInLeft" alt="...">
-							</div>
-							<div class="carousel-item-caption col-6 cursive-font" style="color: black;">
-								<p class="offer-heading-font animate__animated animate__fadeInDown" style="margin-top: 40%">Special Offer</p>
-								<p class="offer-font animate__animated animate__fadeInUp">$100</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="carousel-inner d-none d-sm-block">
-				<div class="carousel-item bs-car-item active">
-					<img src="static/img/banner1.png" class="d-block w-100" alt="...">
-					<div class="carousel-item-row w-100 h-100">
-						<div class="row">
-							<div class="col-6 text-center">
-								<img src="static/img/sofa1.png" class="carousel-item-pic animate__animated animate__fadeInLeft" alt="...">
-							</div>
-							<div class="carousel-item-caption col-6 cursive-font h-100" style="padding: 10%">
-								<p class="offer-heading-font animate__animated animate__fadeInDown">Special Offer</p>
-								<p class="offer-font animate__animated animate__fadeInUp">$100</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item bs-car-item">
-					<img src="static/img/banner1.png" class="d-block w-100" alt="...">
-					<div class="carousel-item-row w-100 h-100">
-						<div class="row">
-							<div class="col-6 text-center">
-								<img src="static/img/sofa1.png" class="carousel-item-pic animate__animated animate__fadeInLeft" alt="...">
-							</div>
-							<div class="carousel-item-caption col-6 cursive-font h-100" style="padding: 10%">
-								<p class="offer-heading-font animate__animated animate__fadeInDown">Special Offer</p>
-								<p class="offer-font animate__animated animate__fadeInUp">$100</p>
+				<div class="carousel-item">
+					
+					<div class="row justify-content-center">
+						<img style="position: absolute;" src="static/img/banner-circle.png" class="w-100 animate__animated animate__fadeInRight" alt="...">
+						<img style="position: absolute;" src="static/img/banner-circle-outline.png" class="w-100 circle-outline" alt="...">
+						<div class="col-md-10">
+							<div class="testimony-wrap d-flex">
+								<div class="img col-md-6 animate__animated animate__fadeInRight animate__delay-2s">
+									<img src="static/img/sofa1.png" class="p-5 w-100 slide-image" alt="...">
+								</div>
+								<div class="text text-center d-flex align-items-center">
+									<div class="desc w-100">
+										<p class="mb-2 animate__animated animate__fadeInLeft animate__delay-2s carousel-primary-text">Occasional chair collection</p>
+										<div class="pt-4">
+											<p class="mb-1 animate__animated animate__fadeInLeft animate__delay-3s carousel-secondary-text">Your sofa is where you let your guard down, put your feet up and relax.</p>
+										</div>
+										<div class="pt-4">
+											<button type="button" class="btn btn-lg btn-dark animate__animated animate__fadeInLeft animate__delay-4s">Shop Now</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
-			</div>
 
+				<div class="carousel-item">
+					
+					<div class="row justify-content-center">
+						<img style="position: absolute;" src="static/img/banner-circle.png" class="w-100 animate__animated animate__fadeInRight" alt="...">
+						<img style="position: absolute;" src="static/img/banner-circle-outline.png" class="w-100 circle-outline" alt="...">
+						<div class="col-md-10">
+							<div class="testimony-wrap d-flex">
+								<div class="img col-md-6 animate__animated animate__fadeInRight animate__delay-2s">
+									<img src="static/img/sofa1.png" class="p-5 w-100 slide-image" alt="...">
+								</div>
+								<div class="text text-center d-flex align-items-center">
+									<div class="desc w-100">
+										<p class="mb-2 animate__animated animate__fadeInLeft animate__delay-2s carousel-primary-text">Occasional chair collection</p>
+										<div class="pt-4">
+											<p class="mb-1 animate__animated animate__fadeInLeft animate__delay-3s carousel-secondary-text">Your sofa is where you let your guard down, put your feet up and relax.</p>
+										</div>
+										<div class="pt-4">
+											<button type="button" class="btn btn-lg btn-dark animate__animated animate__fadeInLeft animate__delay-4s">Shop Now</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
 			
-
-			<a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
+			<!-- Carousel buttons -->
+			<a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
 			</a>
-			<a class="carousel-control-next" href="#slides" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+			<a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
 			</a>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-12">
-			<h1 class="heading1">CATEGORIES</h1>
+			<h1 class="heading1">NEW TRENDING</h1>
 			<hr>
 		</div>
 	</div>
 
+	<!-- Gallery -->
 	<div class="row no-gutters">
-
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
-				</div>
-			</a>
+		<div class="col-lg-4 col-md-4 mb-2 mb-lg-0">
+			<div class="card animate__animated animate__fadeInUp" style="border: none">
+				<img
+				src="/static/img/cat-long.png"
+				class="w-100 shadow-1-strong rounded"
+				alt=""
+				/>
+			</div>
 		</div>
 
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
+		<div class="col-lg-4 col-md-4 mb-2 mb-lg-0">
+			<div class="card mb-3 animate__animated animate__fadeInUp" style="background-color: #f2f2f2; border: none;">
+				<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;">SEATING</h5>
 				</div>
-			</a>
+			</div>
+
+			<div class="card animate__animated animate__fadeInUp" style="background-color: #f2f2f2; border: none;">
+				<img class="card-image-top mx-auto d-block" src="/static/img/cat2.png">
+				<div class="card-body" style="font-weight: bold;">
+					<h5 class="card-title">SEATING</h5>
+				</div>
+			</div>
 		</div>
 
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
+		<div class="col-lg-4 col-md-4 mb-2 mb-lg-0">
+			<div class="card animate__animated animate__fadeInUp mb-3" style="background-color: #f2f2f2; border: none;">
+				<img class="card-image-top mx-auto d-block" src="/static/img/cat3.png">
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;">SEATING</h5>
 				</div>
-			</a>
-		</div>
+			</div>
 
+			<div class="card animate__animated animate__fadeInUp" style="background-color: #f2f2f2; border: none;">
+				<img class="card-image-top mx-auto d-block" src="/static/img/cat3.png">
+				<div class="card-body">
+					<h5 class="card-title" style="font-weight: bold;">SEATING</h5>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div class="row no-gutters">
-
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
-				</div>
-			</a>
-		</div>
-
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
-				</div>
-			</a>
-		</div>
-
-		<div class="col-md-4 no-gutters">
-			<a href="/seating/sofa" class="text-dark">
-				<div class="card">
-					<img class="card-image-top mx-auto d-block" src="/static/img/cat1.png">
-					<div class="card-body">
-						<h5 class="card-title">Seating</h5>
-					</div>
-				</div>
-			</a>
-		</div>
-
-	</div>
+	<!-- Gallery -->
 
 	<div class="row card cursive-font d-none d-sm-block">
 		<img class="card-img adbanner" src="https://picsum.photos/1920/800" style="width: 100%">
