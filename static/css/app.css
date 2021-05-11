@@ -2,8 +2,14 @@
 	font-family: 'Oswald', sans-serif;
 }
 
-.cursive-font {
-	font-family: 'Cookie', cursive;
+* {
+	/*font-family: 'Cookie', cursive;*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+	background-color: #43a3b3;
+	padding: 30px;
 }
 
 /*.offer-heading-font {
@@ -17,6 +23,20 @@
 
 .redb {
 	border: 1px solid red;
+}
+
+.redback {
+	/*background-color: #43a3b3;*/
+	background-color: #43a3b3;
+}
+
+.circle-outline {
+	animation: cssAnimation 2s 2s forwards;
+	opacity: 0;
+}
+
+@keyframes cssAnimation {
+	to { opacity: 1; }
 }
 
 .card {
@@ -68,33 +88,58 @@ a.nav-link-footer {
 }
 
 @media (max-width: 2000px) {
-	.offer-heading-font, .offer-font {
-		font-size: 100px;
+	.carousel-primary-text {
+		font-size: 3rem;
+		font-weight: bold;
+		/*color: yellow;*/
 	}
 
-	.carousel-item-pic {
-		height: 80%;
-		padding: 10%;
+	.carousel-secondary-text {
+		font-size: 1.5rem;
+		/*color: yellow;*/
 	}
 }
 
 @media (max-width: 768px) {
-	.offer-heading-font, .offer-font {
-		font-size: 50px;
+	.carousel-primary-text {
+		font-size: 1.8rem;
+		font-weight: bold;
+		/*color: purple;*/
 	}
 
-	.carousel-item-pic {
-		width: 160%
+	.carousel-secondary-text {
+		font-size: 1rem;
+		/*color: yellow;*/	
 	}
 }
 
 @media (max-width: 544px) {
-	.offer-heading-font, .offer-font {
-		font-size: 30px;
+	.carousel-primary-text {
+		font-size: 1.2rem;
+		/*color: red;*/
 	}
 
-	.carousel-item-pic {
-		margin-top: 40%;
-		width: 160%;
+	.carousel-secondary-text {
+		font-size: 1rem;
+		/*color: purple;*/	
 	}
+
+	.slide-image {
+		position: absolute;
+	}
+}
+
+.foam-req {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/*.item-specifics-row {
+	margin-top: 15px;
+}*/
+
+footer {
+	background-color: darkgrey;
 }

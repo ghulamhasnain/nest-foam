@@ -10,18 +10,6 @@ from .helpers import *
 
 # Create your views here.
 
-class Home(View):
-	def get(self, request):
-		categories = Cat.objects.all()
-
-		cart_len = cart_count(request)
-
-		response = render(request, 'home.html', {'categories': categories, 'cart_len': cart_len})
-
-		response.set_cookie('uid', 'somethingunique')
-
-		return response
-
 class Category(View):
 	def get(self, request, category):
 
@@ -138,46 +126,7 @@ class Subcategory(View):
 				except:
 					request.session['cart'] = [session_value]
 
-				return redirect('/'+category+'/'+subcategory)
+				return redirect('/products/'+category+'/'+subcategory)
 
 			else:
 				return HttpResponse('not sessioned')
-
-
-class Cart(View):
-	def get(self, request):
-
-		cart_len = cart_count(request)
-
-		try:
-			cart = request.session['cart']
-
-		except:
-			cart = []
-
-		cart_total = 0
-
-		if cart_len > 0:
-			for c in cart:
-				cart_total = cart_total + c[-1]
-
-		return render(request, 'cart.html', {'cart_len': cart_len, 'cart': cart, 'cart_total': roundToTwoDecimalPlaces(cart_total)})
-
-class DeleteCartEntry(View):
-	def get(self, request, linenum):
-
-		cart_len = cart_count(request)
-		cart = request.session['cart']
-		line_to_delete = cart[linenum-1]
-		del cart[linenum-1]
-
-		request.session['cart'] = cart
-
-		return redirect('cart')
-
-class EmptyCart(View):
-	def get(self, request):
-
-		request.session['cart'] = ''
-
-		return redirect('cart')

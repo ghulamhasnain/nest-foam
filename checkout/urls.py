@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include, path
-from django.contrib import admin
 
 from . import views
 
 urlpatterns = [
-	path('<slug:category>/', views.Category.as_view(), name='category'),
-    path('<slug:category>/<slug:subcategory>', views.Subcategory.as_view(), name='subcategory')
+	path('', views.Cart.as_view(), name='cart'),
+    path('delete/<int:linenum>', views.DeleteCartEntry.as_view(), name='deletecartentry'),
+    path('empty', views.EmptyCart.as_view(), name='emptycart'),
+    
+    path('payment_complete', views.PaymentComplete.as_view(), name="payment_complete"), ##Paypal payment complete
+    path('payment_successful', views.PaymentSuccessful.as_view(), name="payment_successful"), #Paypal payment successful
+
+    path('payment', views.Payment.as_view(), name='payment'), # Stripe Payment initiation
 ]
