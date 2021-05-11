@@ -86,7 +86,7 @@ class Subcategory(View):
 				except:
 					request.session['cart'] = [session_value]
 
-				return redirect('/'+category+'/'+subcategory)
+				return redirect('/products/'+category+'/'+subcategory)
 
 			else:
 				return HttpResponse('not sessioned')
