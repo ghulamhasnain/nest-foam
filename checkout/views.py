@@ -131,8 +131,8 @@ class CheckoutStripe(View):
 			payment_method_types=['card'],
 			line_items=line_items,
 			mode='payment',
-			success_url='http://localhost:8000/cart/checkout/complete',
-			cancel_url='http://localhost:8000/cart/checkout/cancel',
+			success_url='http://ghulamhasnain.pythonanywhere.com/cart/checkout/complete',
+			cancel_url='http://ghulamhasnain.pythonanywhere.com/cart/checkout/cancel',
 		)
 
 		return JsonResponse({
