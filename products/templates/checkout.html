@@ -1,0 +1,97 @@
+{% extends 'base1.html' %}
+
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+	<script src="https://js.stripe.com/v3/"></script>
+
+	<section>
+		<div class="product">
+			<img
+				src="https://i.imgur.com/EHyR2nP.png"
+				alt="The cover of Stubborn Attachments"
+				/>
+			<div class="description">
+				<h3>Stubborn Attachments</h3>
+				<h5>$20.00</h5>
+			</div>
+		</div>
+		
+		<div class="col-6">
+			<button class="btn btn-primary btn-lg w-100" type="button" id="checkout-button">Pay with debit or credit card</button>
+		</div>
+		<div class="col-6"></div>
+			<div id="paypal-button-container"></div>
+		</div>
+	</section>
+
+	<script src="{% static '/js/checkout.js' %}"></script>
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=Ad578eVwBNx76nWxGcIqY9qW4UKe2o69F5GsCuR099rA9oCtY59C6Rl8Hg2A_Ft6wQpZE4cf4mjN7Pye&currency=GBP"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+	</script>
+	<script>
+		function getCookie(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie != '') {
+				var cookies = document.cookie.split(';');
+				for (var i=0 ; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+
+		var csrftoken = getCookie('csrftoken');
+
+		function initPaypalButton() {
+			paypal.Buttons({
+				style: {
+					layout: 'horizontal',
+					color: 'gold',
+					shape: 'rect',
+					label: 'paypal',
+					tagline: 'false',
+					size: 'responsive'
+				},
+				createOrder: function(data, actions) {
+					return actions.order.create({
+						purchase_units: [{
+							amount: {
+								value: "{{cart_total}}",
+								currency: "GBP",
+							}
+						}]
+					});
+				},
+				onApprove: function(data, actions) {
+					return actions.order.capture()
+						.then(function(details) {
+							var url = "{% url 'cart:payment_complete' %}"
+							return fetch(url, {
+								method: 'POST',
+								headers: {
+									'content_type': 'application/json',
+									'X-CSRFToken': csrftoken,
+								},
+								body: JSON.stringify({
+									orderID: data.orderID
+								})
+							}).then(function() {
+								location.href = "{% url 'cart:payment_successful' %}"
+							})
+						})
+				}
+			}).render('#paypal-button-container');
+		}
+
+		initPaypalButton()
+	</script>
+
+{% endblock %}
