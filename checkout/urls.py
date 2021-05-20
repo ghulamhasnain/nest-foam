@@ -20,10 +20,13 @@ from . import views
 urlpatterns = [
 	path('', views.Cart.as_view(), name='cart'),
     path('delete/<int:linenum>', views.DeleteCartEntry.as_view(), name='deletecartentry'),
-    path('empty', views.EmptyCart.as_view(), name='emptycart'),
+    path('empty', views.EmptyCart.as_view(), name='empty'),
     
-    path('payment_complete', views.PaymentComplete.as_view(), name="payment_complete"), ##Paypal payment complete
+    path('payment_complete', views.PaypalPaymentComplete.as_view(), name="payment_complete"), ##Paypal payment complete
     path('payment_successful', views.PaymentSuccessful.as_view(), name="payment_successful"), #Paypal payment successful
 
-    path('payment', views.Payment.as_view(), name='payment'), # Stripe Payment initiation
+    path('checkout', views.Checkout.as_view(), name='checkout'),
+    path('checkout_stripe', views.CheckoutStripe.as_view(), name='checkout_stripe'),
+    path('checkout/complete', views.StripePaymentComplete.as_view(), name='success'),
+    path('checkout/cancel', views.CheckoutCancel.as_view(), name='cancel')
 ]
