@@ -69,14 +69,15 @@ class Subcategory(View):
 
 
 			if material in materials and colour in colours:
-				price = area * pricing[category][subcategory][foamType][material][colour] * quantity
+				unit_price = area * pricing[category][subcategory][foamType][material][colour]
+				price = unit_price * quantity
 
 			else:
 				price = 0
 
 			if price > 0:
 
-				session_value = [category, subcategory, foamType, length, width, height, material, colour, quantity, roundToTwoDecimalPlaces(price)]
+				session_value = [category, subcategory, foamType, length, width, height, material, colour, quantity, roundToTwoDecimalPlaces(price), roundToTwoDecimalPlaces(unit_price)]
 
 				try:
 					session = request.session['cart']
@@ -102,7 +103,8 @@ class Subcategory(View):
 
 
 				if material in materials and colour in colours:
-					price = area * pricing[category][subcategory][foamType][material][colour] * quantity
+					unit_price = area * pricing[category][subcategory][foamType][material][colour]
+					price = unit_price * quantity
 
 				else:
 					price = 0
@@ -110,13 +112,14 @@ class Subcategory(View):
 			else:
 
 				try:
-					price = pricing[category][subcategory][foamType][material][colour] * quantity
+					unit_price = pricing[category][subcategory][foamType][material][colour]
+					price = unit_price * quantity
 				except Exception as e:
 					price =  0
 
 			if price > 0:
 
-				session_value = [category, subcategory, foamType, length, width, height, material, colour, quantity, roundToTwoDecimalPlaces(price)]
+				session_value = [category, subcategory, foamType, length, width, height, material, colour, quantity, roundToTwoDecimalPlaces(price), roundToTwoDecimalPlaces(unit_price)]
 
 				try:
 					session = request.session['cart']
